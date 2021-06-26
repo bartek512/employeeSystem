@@ -1,0 +1,14 @@
+debug: true # https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-logging
+logging:
+  level:
+    root: INFO
+    org.springframework.boot.autoconfigure: INFO
+    org.springframework.boot.context.config.ConfigFileApplicationListener: DEBUG
+    org.springframework.jdbc.datasource.init.ScriptUtils: INFO # executing data.sql (change to DEBUG if You want to see it)
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    password:
