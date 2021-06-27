@@ -76,6 +76,6 @@ public class ContractServiceImpl implements ContractService {
                 .withDepartment(department)
                 .withPosition(position)
                 .withSalary(salary)
-                .build(); // czy nie warto dolozyc do kandydata pozycje i stawke  ?
+                .build();
     }
 }

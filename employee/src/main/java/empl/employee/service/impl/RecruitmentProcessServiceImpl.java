@@ -21,14 +21,11 @@ public class RecruitmentProcessServiceImpl implements RecruitmentProcessService 
 
     private final EmailService emailService;
 
-    private final ContractService contractService;
-
     private final EmployeeService employeeService;
 
     @Autowired
-    public RecruitmentProcessServiceImpl(EmailService emailService, ContractService contractService, EmployeeService employeeService) {
+    public RecruitmentProcessServiceImpl(EmailService emailService, EmployeeService employeeService) {
         this.emailService = emailService;
-        this.contractService = contractService;
         this.employeeService = employeeService;
     }
 
@@ -45,7 +42,6 @@ public class RecruitmentProcessServiceImpl implements RecruitmentProcessService 
     @Override
     public Employee hireNewEmployee(Employee employee, Department department, Position position, BigDecimal salary) throws BusinessException {
         Employee hiredEmpl = employeeService.addNewEmployee(employee);
-        ContractDto contrac = contractService.addNewContract(employee, department, position, salary);
         emailService.sendEmailWithParams(employee.getEmail(), "Wynik rekrutacji", new Object[]{position.getName(), salary});
         return hiredEmpl;
     }

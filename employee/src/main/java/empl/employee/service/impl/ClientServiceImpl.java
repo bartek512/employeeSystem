@@ -38,7 +38,6 @@ public class ClientServiceImpl implements ClientService {
     public ClientDto updateClient(final ClientDto dto) throws NullFieldException {
         this.clientValidator.validate(dto);
         final Client entityToSave = this.clientMapper.mapToEntity(dto);
-        // add some business logic
         final Client savedClient = this.clientRepository.save(entityToSave);
         return this.clientMapper.mapToDto(savedClient);
     }
